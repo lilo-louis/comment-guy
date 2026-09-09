@@ -26,6 +26,8 @@ export interface EngineConfig {
     candidatesPerPost: number;
     maxSlopRetries: number;
     maxReplyChars: number;
+    /** Output budget per draft call. A 280-char reply needs ~80 tokens. */
+    maxTokens: number;
   };
   diversity: {
     /** Compare against this many recent replies. */
@@ -85,7 +87,7 @@ sold, named, or linked in a comment. The profile bio does the selling.`,
     ],
   },
 
-  drafting: { candidatesPerPost: 2, maxSlopRetries: 2, maxReplyChars: 280 },
+  drafting: { candidatesPerPost: 2, maxSlopRetries: 2, maxReplyChars: 280, maxTokens: 512 },
 
   diversity: { recentWindow: 40, rejectAbove: 0.72 },
 
@@ -99,7 +101,10 @@ sold, named, or linked in a comment. The profile bio does the selling.`,
     forbiddenTerms: ["shopgeist"],
   },
 
-  models: { scorer: MODELS.haiku, drafter: MODELS.opus, slopGate: MODELS.haiku },
+  // Drafting defaults to the newest-generation model this account can reach.
+  // MODELS.opus (Opus 4.5) is a higher tier but an older generation — switch
+  // with DRAFT_MODEL if it drafts better in review.
+  models: { scorer: MODELS.haiku, drafter: MODELS.sonnet, slopGate: MODELS.haiku },
 
   promptVersion: "v1",
 };

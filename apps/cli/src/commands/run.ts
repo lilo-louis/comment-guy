@@ -13,6 +13,8 @@ export interface RunArgs {
   limit: number;
   dry: boolean;
   stats: boolean;
+  /** Ignore the already-seen set so the same fixtures can be re-run while iterating. */
+  fresh: boolean;
   maxPerSource: number;
 }
 
@@ -47,6 +49,7 @@ export async function runCommand(args: RunArgs): Promise<number> {
   console.log(`  voice      ${profile.version} (${profile.sampleCount} samples)`);
   console.log(`  sources    ${targets.filter((t) => t.enabled).length} targets, ${topics.filter((t) => t.enabled).length} topics`);
   console.log(`  history    ${recent.length} recent replies in the diversity window`);
+  if (args.fresh) console.log(c.yellow("  --fresh     ignoring already-seen posts"));
   console.log();
 
   const run = await runPipeline(x, ai, config, {
@@ -57,7 +60,7 @@ export async function runCommand(args: RunArgs): Promise<number> {
     voiceProfileVersion: profile.version,
     recent,
     billed: !free,
-    seenPostIds: new Set(state.seenPostIds),
+    seenPostIds: new Set(args.fresh ? [] : state.seenPostIds),
     repliedPostIds: new Set(state.repliedPostIds),
     onProgress: (m) => console.log(c.dim(`  · ${m}`)),
   });
@@ -79,10 +82,12 @@ export async function runCommand(args: RunArgs): Promise<number> {
   console.log(`  saved ${c.cyan(file.replace(PATHS.root + "/", ""))}`);
   console.log(`  next  ${c.cyan("pnpm cg review")}`);
 
-  await saveState({
-    seenPostIds: [...new Set([...state.seenPostIds, ...run.scored.map((s) => s.postId)])].slice(-5000),
-    repliedPostIds: state.repliedPostIds,
-  });
+  if (!args.fresh) {
+    await saveState({
+      seenPostIds: [...new Set([...state.seenPostIds, ...run.scored.map((s) => s.postId)])].slice(-5000),
+      repliedPostIds: state.repliedPostIds,
+    });
+  }
 
   return 0;
 }

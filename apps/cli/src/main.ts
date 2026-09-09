@@ -20,6 +20,8 @@ ${c.bold("Options")}
   --max-per-source <n> Max posts read per source       (default 50)
   --dry               Use canned responses. Nothing billed, nothing sent.
   --stats             Show prefilter rejection breakdown.
+  --fresh             Ignore already-seen state. For iterating in Phase A —
+                      in production a re-read costs money, so it is off.
   -h, --help
 
 ${c.bold("Environment")}
@@ -39,6 +41,7 @@ async function main(): Promise<number> {
       "max-per-source": { type: "string", default: "50" },
       dry: { type: "boolean", default: false },
       stats: { type: "boolean", default: false },
+      fresh: { type: "boolean", default: false },
       help: { type: "boolean", short: "h", default: false },
     },
   });
@@ -59,7 +62,13 @@ async function main(): Promise<number> {
 
   switch (command) {
     case "run":
-      return runCommand({ limit, dry: values.dry as boolean, stats: values.stats as boolean, maxPerSource });
+      return runCommand({
+        limit,
+        dry: values.dry as boolean,
+        stats: values.stats as boolean,
+        fresh: values.fresh as boolean,
+        maxPerSource,
+      });
     case "review":
       return reviewCommand();
     case "eval":

@@ -40,7 +40,10 @@ billed. Use it to check wiring, never to judge quality.
 | `cg voice build` | regenerate the voice profile from `fixtures/voice/*.md` |
 | `cg voice show` | print the current profile |
 
-Options: `--limit N`, `--max-per-source N`, `--dry`, `--stats`.
+Options: `--limit N`, `--max-per-source N`, `--dry`, `--stats`, `--fresh`.
+
+`--fresh` ignores the already-seen set so the same fixtures can be re-run while
+iterating. In production a re-read costs real money, so it is off by default.
 
 ## How it works
 
@@ -74,8 +77,11 @@ whether or not it becomes a comment.** At the target funnel roughly 95% of read
 spend is on posts that never get replied to, so discovery breadth is the main
 cost dial and filtering belongs in the X *query*, not after the read.
 
-At 15 comments/day the running cost is roughly **$100/month** — about $60 of it
-X reads, $35 model spend, $5 AWS. Every `cg run` prints what it cost.
+At 15 comments/day the running cost is roughly **$80/month** — about $60 of it
+X reads, ~$17 model spend, ~$5 AWS. Every `cg run` prints what it cost.
+
+The model figure is measured, not estimated: a live run scored 14 posts and
+drafted 5 for $0.08, which is $0.0007 per post scored and $0.014 per draft.
 
 Phase A costs nothing in X spend (fixtures) and ~$10 total in model spend.
 
@@ -86,21 +92,39 @@ the public pricing page and still need confirming in the console.
 
 ## Models
 
-Bedrock Mantle, via `@anthropic-ai/bedrock-sdk`:
+Via `@anthropic-ai/bedrock-sdk`.
+
+Bedrock exposes Claude through two surfaces and this account is only enabled for
+one of them. Verified on account 139830186180, 2026-09-09:
+
+- **Mantle** (the newer Messages-API endpoint, short IDs like
+  `anthropic.claude-opus-5`) — **not enabled**. Every model 403s with "not
+  available for this account", including open-access ones.
+- **InvokeModel** (classic `bedrock-runtime`, dated IDs behind a `us.`/`global.`
+  inference profile) — works.
+
+On the invoke path, Sonnet 5, Opus 5, Opus 4.8 and Opus 4.7 are all denied. What
+actually answers:
 
 | role | model | why |
 |---|---|---|
-| scoring, slop gate | `anthropic.claude-haiku-4-5` | high-volume cheap classifier |
-| drafting, voice | `anthropic.claude-opus-5` | the output is the product |
+| scoring, slop gate | `global.anthropic.claude-haiku-4-5-...` | high-volume cheap classifier |
+| drafting, voice | `global.anthropic.claude-sonnet-4-6` | newest generation reachable here |
+| alternative | `us.anthropic.claude-opus-4-5-...` | higher tier, older generation |
 
-**Opus 5 needs a Bedrock model-access request**; Haiku 4.5 and Sonnet 5 are open
-to all customers. If that request isn't approved yet, set
-`DRAFT_MODEL=anthropic.claude-sonnet-5` rather than waiting.
+Set `BEDROCK_BACKEND=mantle` and the short IDs once Mantle access is granted.
 
-Two Bedrock constraints the code works around: **structured outputs are not
-supported**, so JSON comes back through forced tool use; and **Message Batches
-are not supported**, so there is no 50% bulk discount for scoring. Prompt caching
-is supported and is used for the scoring rubric and drafting system prompt.
+Three Bedrock constraints the code works around: **structured outputs are not
+supported**, so JSON comes back through forced tool use; **Message Batches are
+not supported**, so there is no 50% bulk discount for scoring; and **prompt
+caching only applies above a 2048-token prefix** — the drafter's system prompt
+clears it (~2.2k tokens with the voice profile embedded), the scoring rubric
+(~875 tokens) does not.
+
+Thinking is deliberately **off** for drafting. Measured: with thinking, a draft
+cost 1229 output tokens and at a 512-token budget consumed the entire allowance
+and returned nothing; without it, 36 tokens and a better reply. Reasoning depth
+is not what makes a good 280-character comment.
 
 ## Layout
 

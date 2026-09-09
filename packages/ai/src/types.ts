@@ -16,8 +16,18 @@ export interface CompleteRequest {
   messages: AIMessage[];
   maxTokens: number;
   /**
-   * Cache the system prompt. Prompt caching IS supported on Bedrock and the
-   * scoring rubric is identical across every call, so this is close to free money.
+   * Cache the system prompt.
+   *
+   * Verified working on Bedrock — but only above the model's minimum cacheable
+   * prefix (2048 tokens on Haiku 4.5). Below that the cache is silently skipped.
+   *
+   * Measured on a live run: the drafter's system prompt (~2.2k tokens once the
+   * voice profile is embedded) caches and reads back ~2.2k tokens per call. The
+   * scorer's rubric (~875 tokens) is under the minimum and is NOT cached — it
+   * costs roughly $0.80/month in re-billed tokens at target volume, which is
+   * why padding it has not been worth doing.
+   *
+   * Check `usage.cacheReadTokens` in the run output rather than assuming.
    */
   cacheSystem?: boolean;
   thinking?: boolean;
@@ -27,6 +37,13 @@ export interface CompleteResult {
   text: string;
   usage: TokenUsage;
   model: string;
+  /**
+   * Why generation stopped. `max_tokens` with empty text means the budget was
+   * spent before any text was emitted — surfaced explicitly because it is
+   * otherwise indistinguishable from the model choosing to say nothing.
+   */
+  stopReason: string | null;
+  truncated: boolean;
 }
 
 export interface ToolRequest<T> extends CompleteRequest {

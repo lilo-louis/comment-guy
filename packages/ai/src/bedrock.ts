@@ -1,4 +1,4 @@
-import { AnthropicBedrockMantle } from "@anthropic-ai/bedrock-sdk";
+import { AnthropicBedrock, AnthropicBedrockMantle } from "@anthropic-ai/bedrock-sdk";
 import type Anthropic from "@anthropic-ai/sdk";
 import type {
   AIProvider,
@@ -8,11 +8,23 @@ import type {
   ToolResult,
   TokenUsage,
 } from "./types.ts";
+import { supportsAdaptiveThinking } from "./models.ts";
+
+export type BedrockBackend = "invoke" | "mantle";
 
 export interface BedrockProviderOptions {
   awsRegion?: string;
-  /** AWS named profile, e.g. "shopgeist-admin". */
+  /**
+   * AWS named profile, e.g. "shopgeist-admin". The Mantle client takes this
+   * directly; the invoke client resolves it from the AWS credential chain, so
+   * it is exported into the environment instead.
+   */
   awsProfile?: string;
+  /**
+   * Which Bedrock surface to call. "invoke" is the classic bedrock-runtime path
+   * and works on accounts without Mantle enablement, which includes this one.
+   */
+  backend?: BedrockBackend;
   maxRetries?: number;
 }
 
@@ -32,15 +44,29 @@ function buildSystem(system: string, cache: boolean): Anthropic.TextBlockParam[]
 }
 
 export class BedrockProvider implements AIProvider {
-  readonly name = "bedrock";
-  private client: AnthropicBedrockMantle;
+  readonly name: string;
+  readonly backend: BedrockBackend;
+  private client: AnthropicBedrockMantle | AnthropicBedrock;
 
   constructor(opts: BedrockProviderOptions = {}) {
-    this.client = new AnthropicBedrockMantle({
-      ...(opts.awsRegion ? { awsRegion: opts.awsRegion } : {}),
-      ...(opts.awsProfile ? { awsProfile: opts.awsProfile } : {}),
-      maxRetries: opts.maxRetries ?? 3,
-    });
+    this.backend = opts.backend ?? "invoke";
+    this.name = `bedrock:${this.backend}`;
+    const maxRetries = opts.maxRetries ?? 3;
+
+    if (this.backend === "mantle") {
+      this.client = new AnthropicBedrockMantle({
+        ...(opts.awsRegion ? { awsRegion: opts.awsRegion } : {}),
+        ...(opts.awsProfile ? { awsProfile: opts.awsProfile } : {}),
+        maxRetries,
+      });
+    } else {
+      // The invoke client has no profile option; it reads the standard chain.
+      if (opts.awsProfile) process.env["AWS_PROFILE"] = opts.awsProfile;
+      this.client = new AnthropicBedrock({
+        ...(opts.awsRegion ? { awsRegion: opts.awsRegion } : {}),
+        maxRetries,
+      });
+    }
   }
 
   async complete(req: CompleteRequest): Promise<CompleteResult> {
@@ -49,7 +75,11 @@ export class BedrockProvider implements AIProvider {
       max_tokens: req.maxTokens,
       system: buildSystem(req.system, req.cacheSystem ?? false),
       messages: req.messages.map((m) => ({ role: m.role, content: m.content })),
-      ...(req.thinking ? { thinking: { type: "adaptive" as const } } : {}),
+      // Adaptive thinking 400s on pre-4.6 models, so it is only sent where the
+      // configured model actually supports it.
+      ...(req.thinking && supportsAdaptiveThinking(req.model)
+        ? { thinking: { type: "adaptive" as const } }
+        : {}),
     });
 
     const text = res.content
@@ -58,7 +88,13 @@ export class BedrockProvider implements AIProvider {
       .join("")
       .trim();
 
-    return { text, usage: readUsage(res.usage), model: req.model };
+    return {
+      text,
+      usage: readUsage(res.usage),
+      model: req.model,
+      stopReason: res.stop_reason,
+      truncated: res.stop_reason === "max_tokens",
+    };
   }
 
   /**

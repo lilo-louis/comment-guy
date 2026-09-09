@@ -38,7 +38,7 @@ async function generateOne(
   ai: AIProvider,
   config: EngineConfig,
   opts: DraftOptions,
-): Promise<{ text: string; usage: TokenUsage }> {
+): Promise<{ text: string; usage: TokenUsage; truncated: boolean }> {
   const user = DRAFTER_USER(
     item.post.text,
     item.author.username,
@@ -50,13 +50,18 @@ async function generateOne(
     model: config.models.drafter,
     system: DRAFTER_SYSTEM(config, opts.voiceContext),
     cacheSystem: true,
-    maxTokens: 512,
-    thinking: true,
+    maxTokens: config.drafting.maxTokens,
+    // Thinking is deliberately off. Measured on Sonnet 4.6 with the real
+    // system prompt: thinking spent 1229 output tokens to write a 280-char
+    // reply (and at maxTokens 512 it consumed the whole budget and returned
+    // nothing at all), versus 36 tokens without it — for a reply that matched
+    // the voice better. Reasoning depth is not what makes a good short reply.
+    thinking: false,
     messages: [{ role: "user", content: opts.steer ? `${user}\n\nAdditionally: ${opts.steer}` : user }],
   });
   // Models like to wrap replies in quotes despite being told not to.
   const text = res.text.trim().replace(/^["“](.*)["”]$/s, "$1").trim();
-  return { text, usage: res.usage };
+  return { text, usage: res.usage, truncated: res.truncated };
 }
 
 /**
@@ -88,6 +93,25 @@ export async function draftReply(
 
     for (const g of generated) {
       usage = addUsage(usage, g.usage);
+
+      // A truncated generation is a configuration problem, not a bad draft.
+      // Report it as itself rather than letting it read as "the model wrote
+      // nothing", and do not pay for a gate call on it.
+      if (g.truncated && g.text.length === 0) {
+        attempts.push({
+          text: "",
+          angle,
+          slop: {
+            passed: false,
+            failures: ["TRUNCATED"],
+            notes: `generation hit the ${config.drafting.maxTokens}-token limit before producing any text`,
+          },
+          diversity: 0,
+          generationReason: reason,
+        });
+        continue;
+      }
+
       const gate = await runSlopGate(g.text, item.post.text, ai, config);
       usage = addUsage(usage, gate.usage);
 

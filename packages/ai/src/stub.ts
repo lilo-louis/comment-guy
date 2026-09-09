@@ -52,7 +52,7 @@ export class StubProvider implements AIProvider {
     const text =
       this.handlers.text?.(req) ??
       `Stub draft ${hash(req.messages.map((m) => m.content).join("")) % 1000}. Specific, short, no link.`;
-    return { text, usage: fakeUsage(req), model: req.model };
+    return { text, usage: fakeUsage(req), model: req.model, stopReason: "end_turn", truncated: false };
   }
 
   async completeWithTool<T>(req: ToolRequest<T>): Promise<ToolResult<T>> {

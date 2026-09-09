@@ -62,6 +62,7 @@ export type SlopFailure =
   | "BANNED_PHRASE"
   | "REPETITIVE"
   | "NOT_SPECIFIC"
+  | "TRUNCATED"
   | "EMPTY";
 
 export interface SlopGateResult {

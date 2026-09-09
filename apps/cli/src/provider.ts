@@ -62,12 +62,14 @@ export function makeProvider(dry: boolean, config: EngineConfig): ProviderChoice
 
   const region = process.env["AWS_REGION"] ?? process.env["AWS_DEFAULT_REGION"] ?? "us-east-1";
   const profile = process.env["AWS_PROFILE"];
+  const backend = process.env["BEDROCK_BACKEND"] === "mantle" ? "mantle" : "invoke";
   return {
     ai: new BedrockProvider({
       awsRegion: region,
+      backend,
       ...(profile ? { awsProfile: profile } : {}),
     }),
-    label: `bedrock ${region}${profile ? ` (profile ${profile})` : ""} — ${config.models.scorer} / ${config.models.drafter}`,
+    label: `bedrock:${backend} ${region}${profile ? ` (${profile})` : ""}\n             scoring ${config.models.scorer}\n             drafting ${config.models.drafter}`,
     free: false,
   };
 }
