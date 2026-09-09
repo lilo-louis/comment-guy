@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
+
+      # Nothing in CI may reach Bedrock or X. A dry run proves the pipeline is
+      # wired without credentials and without spending anything.
+      - name: Dry run
+        run: |
+          mkdir -p fixtures/voice
+          printf 'Returns are a merchandising problem before they are a support problem.\n\nMost stores measure the wrong half of the funnel.\n' > fixtures/voice/ci.md
+          node apps/cli/src/main.ts voice build --dry
+          node apps/cli/src/main.ts run --dry --limit 3

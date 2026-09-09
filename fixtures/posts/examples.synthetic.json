@@ -1,0 +1,808 @@
+{
+  "synthetic": true,
+  "_note": "WRITTEN to exercise the pipeline, not collected from X. Not a valid quality gate \u2014 see README.md.",
+  "posts": [
+    {
+      "post": {
+        "id": "p1",
+        "authorId": "u1",
+        "text": "Our return rate on candles jumped from 4% to 11% in six weeks and I genuinely cannot work out why. Same SKUs, same photography, same shipping partner. Anyone seen this pattern before?",
+        "ageHours": 3,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c1",
+        "metrics": {
+          "replyCount": 9,
+          "likeCount": 180,
+          "repostCount": 22,
+          "quoteCount": 6
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u1",
+        "username": "dtc_maya",
+        "name": "Maya R.",
+        "description": "Founder, home fragrance DTC. 7 figures, 4 people.",
+        "followersCount": 8200,
+        "followingCount": 410,
+        "postCount": 1537,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p2",
+        "authorId": "u2",
+        "text": "The unsexy truth about scaling support: 60% of our tickets were people asking where their order was. We didn't need better macros, we needed the tracking email to not go to spam.",
+        "ageHours": 5,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c2",
+        "metrics": {
+          "replyCount": 14,
+          "likeCount": 420,
+          "repostCount": 52,
+          "quoteCount": 14
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u2",
+        "username": "opsgrind",
+        "name": "Tom Whately",
+        "description": "Ops lead. Shopify Plus. Fixing things that break at scale.",
+        "followersCount": 4100,
+        "followingCount": 205,
+        "postCount": 1574,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p3",
+        "authorId": "u3",
+        "text": "Every founder underestimates exception handling. Happy path fulfilment is easy. It's the 3% of orders that go sideways that eat your entire ops headcount.",
+        "ageHours": 7,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c3",
+        "metrics": {
+          "replyCount": 11,
+          "likeCount": 290,
+          "repostCount": 36,
+          "quoteCount": 9
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u3",
+        "username": "benfulfil",
+        "name": "Ben Osei",
+        "description": "3PL ops. I move other people's boxes.",
+        "followersCount": 6600,
+        "followingCount": 330,
+        "postCount": 1611,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p4",
+        "authorId": "u4",
+        "text": "We tried three AI support tools this year. All three were great at answering questions we already had macros for, and useless at the messy stuff that actually needs a human.",
+        "ageHours": 4,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c4",
+        "metrics": {
+          "replyCount": 22,
+          "likeCount": 510,
+          "repostCount": 63,
+          "quoteCount": 17
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u4",
+        "username": "cx_dana",
+        "name": "Dana Lindqvist",
+        "description": "Head of CX at a mid-size apparel brand.",
+        "followersCount": 3300,
+        "followingCount": 165,
+        "postCount": 1648,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p5",
+        "authorId": "u5",
+        "text": "Genuine question for merchants: what percentage of your support volume is order status, returns, and sizing? Trying to sanity check something.",
+        "ageHours": 2,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c5",
+        "metrics": {
+          "replyCount": 31,
+          "likeCount": 240,
+          "repostCount": 30,
+          "quoteCount": 8
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u5",
+        "username": "shopifysam",
+        "name": "Sam Idris",
+        "description": "Building Shopify apps. Ex-merchant.",
+        "followersCount": 12500,
+        "followingCount": 625,
+        "postCount": 1685,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p6",
+        "authorId": "u6",
+        "text": "Repeat purchase rate is the only metric I'd keep if you took the rest away. Everything upstream is just a more expensive way to buy the first order.",
+        "ageHours": 6,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c6",
+        "metrics": {
+          "replyCount": 17,
+          "likeCount": 650,
+          "repostCount": 81,
+          "quoteCount": 21
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u6",
+        "username": "retentionrach",
+        "name": "Rachel Ng",
+        "description": "Lifecycle + retention. DTC.",
+        "followersCount": 9100,
+        "followingCount": 455,
+        "postCount": 1722,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p7",
+        "authorId": "u7",
+        "text": "Nobody tells you that your pick error rate is a customer support problem. One mispick generates on average four tickets before it's resolved.",
+        "ageHours": 9,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c7",
+        "metrics": {
+          "replyCount": 7,
+          "likeCount": 190,
+          "repostCount": 23,
+          "quoteCount": 6
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u7",
+        "username": "warehouse_j",
+        "name": "Jules",
+        "description": "Warehouse manager turned consultant.",
+        "followersCount": 2900,
+        "followingCount": 145,
+        "postCount": 1759,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p8",
+        "authorId": "u8",
+        "text": "Spent the morning reading every one-star review from the last quarter. Almost none were about the product. Delivery times, packaging damage, and confusion about the subscription.",
+        "ageHours": 5,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c8",
+        "metrics": {
+          "replyCount": 13,
+          "likeCount": 380,
+          "repostCount": 47,
+          "quoteCount": 12
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u8",
+        "username": "emmadtc",
+        "name": "Emma Castellanos",
+        "description": "Founder. Skincare. Bootstrapped.",
+        "followersCount": 5400,
+        "followingCount": 270,
+        "postCount": 1796,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p9",
+        "authorId": "u9",
+        "text": "Your abandoned cart flow is not underperforming because of the copy. It's underperforming because your shipping cost appears for the first time on step three of checkout.",
+        "ageHours": 3,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c9",
+        "metrics": {
+          "replyCount": 26,
+          "likeCount": 890,
+          "repostCount": 111,
+          "quoteCount": 29
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u9",
+        "username": "grow_hassan",
+        "name": "Hassan Malik",
+        "description": "Ecommerce growth. Paid + lifecycle.",
+        "followersCount": 15800,
+        "followingCount": 790,
+        "postCount": 1833,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p10",
+        "authorId": "u10",
+        "text": "Switched to a cheaper courier to save 40p an order. Support volume went up enough that it cost me more in time than I saved. Learned that one the expensive way.",
+        "ageHours": 11,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c10",
+        "metrics": {
+          "replyCount": 5,
+          "likeCount": 120,
+          "repostCount": 15,
+          "quoteCount": 4
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u10",
+        "username": "smallbatch_ko",
+        "name": "Ko",
+        "description": "Small batch coffee. Shipping is my nemesis.",
+        "followersCount": 1800,
+        "followingCount": 90,
+        "postCount": 1870,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p11",
+        "authorId": "u11",
+        "text": "We finally measured how long a return takes end to end. 19 days from customer request to restock. Customers think it's a refund problem. It's a warehouse problem.",
+        "ageHours": 4,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c11",
+        "metrics": {
+          "replyCount": 12,
+          "likeCount": 330,
+          "repostCount": 41,
+          "quoteCount": 11
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u11",
+        "username": "opsanna",
+        "name": "Anna Brekke",
+        "description": "COO, outdoor gear DTC.",
+        "followersCount": 7700,
+        "followingCount": 385,
+        "postCount": 1907,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p12",
+        "authorId": "u12",
+        "text": "If your PDP takes four seconds to load on mobile you do not have a conversion problem, you have a hosting problem wearing a conversion problem's coat.",
+        "ageHours": 8,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c12",
+        "metrics": {
+          "replyCount": 19,
+          "likeCount": 470,
+          "repostCount": 58,
+          "quoteCount": 15
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u12",
+        "username": "merch_dev",
+        "name": "Priya",
+        "description": "Shopify dev. Theme performance nerd.",
+        "followersCount": 4800,
+        "followingCount": 240,
+        "postCount": 1944,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p13",
+        "authorId": "u13",
+        "text": "Hiring your first ops person is the highest leverage hire most founders delay for way too long.",
+        "ageHours": 6,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c13",
+        "metrics": {
+          "replyCount": 24,
+          "likeCount": 700,
+          "repostCount": 87,
+          "quoteCount": 23
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u13",
+        "username": "founderjay",
+        "name": "Jay",
+        "description": "Building in public. B2B SaaS.",
+        "followersCount": 22000,
+        "followingCount": 1100,
+        "postCount": 1981,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p14",
+        "authorId": "u14",
+        "text": "Retail media spend is up again this quarter across every category we track. Brands keep saying it's their most efficient channel.",
+        "ageHours": 10,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c14",
+        "metrics": {
+          "replyCount": 8,
+          "likeCount": 210,
+          "repostCount": 26,
+          "quoteCount": 7
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u14",
+        "username": "ecom_weekly",
+        "name": "Ecom Weekly",
+        "description": "Newsletter. Ecommerce news, weekly.",
+        "followersCount": 31000,
+        "followingCount": 1550,
+        "postCount": 2018,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p15",
+        "authorId": "u15",
+        "text": "Everyone shipping AI agents this year and almost nobody talking about what happens when the agent is confidently wrong in front of a customer.",
+        "ageHours": 5,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c15",
+        "metrics": {
+          "replyCount": 33,
+          "likeCount": 920,
+          "repostCount": 115,
+          "quoteCount": 30
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u15",
+        "username": "aitools_lena",
+        "name": "Lena",
+        "description": "AI tools, mostly for marketers.",
+        "followersCount": 18400,
+        "followingCount": 920,
+        "postCount": 2055,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p16",
+        "authorId": "u16",
+        "text": "Most people fail because they give up too early. Consistency beats talent every single time. Simple as that.",
+        "ageHours": 4,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c16",
+        "metrics": {
+          "replyCount": 120,
+          "likeCount": 3400,
+          "repostCount": 425,
+          "quoteCount": 113
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u16",
+        "username": "hustlethread",
+        "name": "Growth Guy",
+        "description": "Threads about growth. DMs open.",
+        "followersCount": 48000,
+        "followingCount": 2400,
+        "postCount": 2092,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p17",
+        "authorId": "u17",
+        "text": "The best founders I've backed all share one trait: they're relentlessly curious about their customers.",
+        "ageHours": 7,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c17",
+        "metrics": {
+          "replyCount": 45,
+          "likeCount": 1800,
+          "repostCount": 225,
+          "quoteCount": 60
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u17",
+        "username": "vc_marcus",
+        "name": "Marcus",
+        "description": "Investor. Seed stage. Opinions my own.",
+        "followersCount": 56000,
+        "followingCount": 2800,
+        "postCount": 2129,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p18",
+        "authorId": "u18",
+        "text": "The election result is going to reshape how every small business thinks about tariffs and cross-border shipping costs next year.",
+        "ageHours": 3,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c18",
+        "metrics": {
+          "replyCount": 340,
+          "likeCount": 2100,
+          "repostCount": 262,
+          "quoteCount": 70
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u18",
+        "username": "politicsnow",
+        "name": "Political Daily",
+        "description": "News and commentary.",
+        "followersCount": 89000,
+        "followingCount": 4450,
+        "postCount": 2166,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p19",
+        "authorId": "u19",
+        "text": "GIVEAWAY! Drop your Shopify store below and comment below to enter. Like and retweet to win a free store audit worth $2000. First 100 only!",
+        "ageHours": 2,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c19",
+        "metrics": {
+          "replyCount": 890,
+          "likeCount": 5600,
+          "repostCount": 700,
+          "quoteCount": 186
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u19",
+        "username": "giveaway_king",
+        "name": "Deals Daily",
+        "description": "Deals, drops and giveaways.",
+        "followersCount": 120000,
+        "followingCount": 6000,
+        "postCount": 2203,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p20",
+        "authorId": "u20",
+        "text": "Day 3 of building my Shopify store and I already have so many questions about how returns are supposed to work honestly",
+        "ageHours": 1,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c20",
+        "metrics": {
+          "replyCount": 2,
+          "likeCount": 4,
+          "repostCount": 0,
+          "quoteCount": 0
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u20",
+        "username": "tinyshop",
+        "name": "new store",
+        "description": "just started my store!",
+        "followersCount": 42,
+        "followingCount": 50,
+        "postCount": 2240,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p21",
+        "authorId": "u21",
+        "text": "La tasa de devoluciones de nuestra tienda subi\u00f3 mucho este trimestre y no sabemos exactamente por qu\u00e9 est\u00e1 pasando esto ahora.",
+        "ageHours": 4,
+        "lang": "es",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c21",
+        "metrics": {
+          "replyCount": 9,
+          "likeCount": 150,
+          "repostCount": 18,
+          "quoteCount": 5
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u21",
+        "username": "es_tienda",
+        "name": "Carlos Ruiz",
+        "description": "Ecommerce en espa\u00f1ol.",
+        "followersCount": 7300,
+        "followingCount": 365,
+        "postCount": 2277,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p22",
+        "authorId": "u22",
+        "text": "New post https://example.com/blog/returns-benchmarks-2026",
+        "ageHours": 3,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c22",
+        "metrics": {
+          "replyCount": 1,
+          "likeCount": 8,
+          "repostCount": 1,
+          "quoteCount": 0
+        },
+        "urls": [
+          "https://example.com/blog/returns-benchmarks-2026"
+        ],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u22",
+        "username": "linkdropper",
+        "name": "Content Bot",
+        "description": "We post links.",
+        "followersCount": 3100,
+        "followingCount": 155,
+        "postCount": 2314,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p23",
+        "authorId": "u23",
+        "text": "RT: The unsexy truth about scaling support is that most tickets are order status questions and always have been.",
+        "ageHours": 2,
+        "lang": "en",
+        "isRetweet": true,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c23",
+        "metrics": {
+          "replyCount": 4,
+          "likeCount": 60,
+          "repostCount": 7,
+          "quoteCount": 2
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u23",
+        "username": "rt_account",
+        "name": "Repost Central",
+        "description": "We repost the best ecommerce takes.",
+        "followersCount": 9900,
+        "followingCount": 495,
+        "postCount": 2351,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p24",
+        "authorId": "u24",
+        "text": "completely agree with this, we saw the same thing with our returns process last year honestly",
+        "ageHours": 1,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": true,
+        "isQuote": false,
+        "conversationId": "c24",
+        "metrics": {
+          "replyCount": 3,
+          "likeCount": 20,
+          "repostCount": 2,
+          "quoteCount": 0
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u24",
+        "username": "replyguy",
+        "name": "Dan",
+        "description": "reply guy",
+        "followersCount": 5100,
+        "followingCount": 255,
+        "postCount": 2388,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    },
+    {
+      "post": {
+        "id": "p25",
+        "authorId": "u25",
+        "text": "Your fulfilment costs are not too high. Your packaging is too big. Dimensional weight is quietly destroying margins across the entire industry right now.",
+        "ageHours": 6,
+        "lang": "en",
+        "isRetweet": false,
+        "isReply": false,
+        "isQuote": false,
+        "conversationId": "c25",
+        "metrics": {
+          "replyCount": 410,
+          "likeCount": 4200,
+          "repostCount": 525,
+          "quoteCount": 140
+        },
+        "urls": [],
+        "hasMedia": false
+      },
+      "author": {
+        "id": "u25",
+        "username": "viral_ops",
+        "name": "Ops Threads",
+        "description": "Operations content daily.",
+        "followersCount": 67000,
+        "followingCount": 3350,
+        "postCount": 2425,
+        "verified": false,
+        "createdAt": "2019-06-01T00:00:00.000Z"
+      }
+    }
+  ]
+}

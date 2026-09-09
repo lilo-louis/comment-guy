@@ -1,0 +1,13 @@
+{
+  "name": "@cg/cli",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "bin": { "cg": "./src/main.ts" },
+  "dependencies": {
+    "@cg/domain": "workspace:*",
+    "@cg/ai": "workspace:*",
+    "@cg/x-client": "workspace:*",
+    "@cg/comment-engine": "workspace:*"
+  }
+}

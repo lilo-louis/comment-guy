@@ -1,0 +1,15 @@
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Run output, decisions, generated voice profile — personal, never committed
+data/
+
+# Louis's own writing corpus — may contain private messages (plan §8)
+fixtures/voice/*
+!fixtures/voice/.gitkeep
+!fixtures/voice/README.md
+
+*.log
+.DS_Store

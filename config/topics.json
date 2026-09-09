@@ -1,0 +1,8 @@
+[
+  { "topicId": "returns",     "label": "returns & exchanges",  "query": "(returns OR \"return rate\" OR exchanges) (shopify OR dtc OR ecommerce) -is:retweet -is:reply lang:en", "priority": 1, "enabled": true },
+  { "topicId": "support",     "label": "customer support / CX", "query": "(\"customer support\" OR CX OR tickets OR helpdesk) (shopify OR dtc OR ecommerce) -is:retweet -is:reply lang:en", "priority": 1, "enabled": true },
+  { "topicId": "fulfilment",  "label": "fulfilment & 3PL",      "query": "(fulfillment OR fulfilment OR 3PL OR warehouse OR shipping) (shopify OR dtc OR brand) -is:retweet -is:reply lang:en", "priority": 2, "enabled": true },
+  { "topicId": "storeops",    "label": "store operations",      "query": "(\"store operations\" OR \"ops\" OR backoffice) shopify -is:retweet -is:reply lang:en", "priority": 2, "enabled": true },
+  { "topicId": "retention",   "label": "retention & lifecycle", "query": "(retention OR \"repeat purchase\" OR LTV OR lifecycle) (dtc OR ecommerce) -is:retweet -is:reply lang:en", "priority": 3, "enabled": true },
+  { "topicId": "ai-commerce", "label": "AI for commerce",       "query": "(\"ai support\" OR \"support automation\" OR \"ai agent\") (ecommerce OR shopify OR dtc) -is:retweet -is:reply lang:en", "priority": 3, "enabled": false }
+]

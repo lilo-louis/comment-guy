@@ -1,0 +1,13 @@
+{
+  "name": "@cg/ai",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/bedrock-sdk": "^0.33.4",
+    "@anthropic-ai/sdk": ">=0.115.1 <1"
+  }
+}
