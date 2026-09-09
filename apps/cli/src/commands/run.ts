@@ -33,8 +33,7 @@ export async function runCommand(args: RunArgs): Promise<number> {
   ]);
 
   const x = new FixtureXClient(PATHS.fixturesPosts);
-  const all = await x.load();
-  const syntheticOnly = all.length > 0;
+  await x.load();
 
   // Replies already made feed the diversity window, so drafts do not converge
   // on the shapes already published.
@@ -68,14 +67,11 @@ export async function runCommand(args: RunArgs): Promise<number> {
   renderCandidates(run, config);
   renderCost(run, x, free);
 
-  if (syntheticOnly && all.every(() => true)) {
-    const hasReal = await hasRealFixtures();
-    if (!hasReal) {
-      console.log();
-      console.log(c.yellow("  Note: every fixture post is synthetic (written to exercise the pipeline)."));
-      console.log(c.dim("  Drafts here show the machinery works, not that the output is good enough to post."));
-      console.log(c.dim("  See fixtures/posts/README.md for adding real posts."));
-    }
+  if (!(await hasRealFixtures())) {
+    console.log();
+    console.log(c.yellow("  Note: every fixture post is synthetic (written to exercise the pipeline)."));
+    console.log(c.dim("  Drafts here show the machinery works, not that the output is good enough to post."));
+    console.log(c.dim("  See fixtures/posts/README.md for adding real posts."));
   }
 
   const file = await saveRun(run);
