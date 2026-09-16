@@ -7,7 +7,7 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@anthropic-ai/bedrock-sdk": "^0.33.4",
+    "@anthropic-ai/bedrock-sdk": "^0.33.5",
     "@anthropic-ai/sdk": ">=0.115.1 <1"
   }
 }
