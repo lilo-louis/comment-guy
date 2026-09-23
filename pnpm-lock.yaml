@@ -33,8 +33,8 @@ importers:
   packages/ai:
     dependencies:
       '@anthropic-ai/bedrock-sdk':
-        specifier: ^0.33.4
-        version: 0.33.4
+        specifier: ^0.33.7
+        version: 0.33.7
       '@anthropic-ai/sdk':
         specifier: '>=0.115.1 <1'
         version: 0.124.0
@@ -58,8 +58,8 @@ importers:
 
 packages:
 
-  '@anthropic-ai/bedrock-sdk@0.33.4':
-    resolution: {integrity: sha512-LvpzMH8Vbptg2CAGIJDiMbv6yLfBIGldDybDP/2jCf9F93F3Hw0Tf2aK4Dabq8C7gkxJ3FdxARjmq/AXHqe1bQ==}
+  '@anthropic-ai/bedrock-sdk@0.33.7':
+    resolution: {integrity: sha512-KhjIqf7fo8vnyhW+tA+7YKS7zS5OxnII9AbJI7Ncr5KkaNkj32YzOWpY8YkyN+krkqARW2d8nYJJjZfwmsPkzg==}
 
   '@anthropic-ai/sdk@0.124.0':
     resolution: {integrity: sha512-cN5O8i9UVxHeOQAzj/XjshWXG8KiibJDw9OGpH2Z/eR3n/RBxdoLxDJOcfqAJWvjaMDFfHTBADU04hWRJVkDyA==}
@@ -372,7 +372,7 @@ packages:
 
 snapshots:
 
-  '@anthropic-ai/bedrock-sdk@0.33.4':
+  '@anthropic-ai/bedrock-sdk@0.33.7':
     dependencies:
       '@anthropic-ai/sdk': 0.124.0
       '@aws-crypto/sha256-js': 4.0.0
