@@ -37,7 +37,7 @@ importers:
         version: 0.33.4
       '@anthropic-ai/sdk':
         specifier: '>=0.115.1 <1'
-        version: 0.124.0
+        version: 0.135.0
 
   packages/comment-engine:
     dependencies:
@@ -61,8 +61,8 @@ packages:
   '@anthropic-ai/bedrock-sdk@0.33.4':
     resolution: {integrity: sha512-LvpzMH8Vbptg2CAGIJDiMbv6yLfBIGldDybDP/2jCf9F93F3Hw0Tf2aK4Dabq8C7gkxJ3FdxARjmq/AXHqe1bQ==}
 
-  '@anthropic-ai/sdk@0.124.0':
-    resolution: {integrity: sha512-cN5O8i9UVxHeOQAzj/XjshWXG8KiibJDw9OGpH2Z/eR3n/RBxdoLxDJOcfqAJWvjaMDFfHTBADU04hWRJVkDyA==}
+  '@anthropic-ai/sdk@0.135.0':
+    resolution: {integrity: sha512-WWrdL57JhU5KoynpTjt9GXK6k7ud9nPw2uw/Trn+oBXh6s0KpjhAccWZm2Qxw08ARYG1UDQj5iC+JO42j1rt/g==}
     hasBin: true
     peerDependencies:
       zod: ^3.25.0 || ^4.0.0
@@ -176,6 +176,10 @@ packages:
   '@babel/runtime@7.29.7':
     resolution: {integrity: sha512-Nq8OhGWiZIZGV6hLHoyAKLLcJihP/xFeBMGJoUrxTX2psI8dCifzLhZISFb+VWS3wFMRDmCGw5R+dOySCqPLhw==}
     engines: {node: '>=6.9.0'}
+
+  '@opentelemetry/api@1.9.1':
+    resolution: {integrity: sha512-gLyJlPHPZYdAk1JENA9LeHejZe1Ti77/pTeFm/nMXmQH/HFZlcS/O2XJB+L8fkbrNSqhdtlvjBVjxwUYanNH5Q==}
+    engines: {node: '>=8.0.0'}
 
   '@smithy/abort-controller@2.2.0':
     resolution: {integrity: sha512-wRlta7GuLWpTqtFfGo+nZyOO1vEvewdNR1R4rTxpC8XU6vG/NDyrFBhwLZsqg1NUoR1noVaXJPC/7ZK47QCySw==}
@@ -374,7 +378,7 @@ snapshots:
 
   '@anthropic-ai/bedrock-sdk@0.33.4':
     dependencies:
-      '@anthropic-ai/sdk': 0.124.0
+      '@anthropic-ai/sdk': 0.135.0
       '@aws-crypto/sha256-js': 4.0.0
       '@aws-sdk/client-bedrock-runtime': 3.1128.0
       '@aws-sdk/credential-providers': 3.1128.0
@@ -388,8 +392,9 @@ snapshots:
     transitivePeerDependencies:
       - zod
 
-  '@anthropic-ai/sdk@0.124.0':
+  '@anthropic-ai/sdk@0.135.0':
     dependencies:
+      '@opentelemetry/api': 1.9.1
       json-schema-to-ts: 3.1.1
       standardwebhooks: 1.1.1
 
@@ -631,6 +636,8 @@ snapshots:
   '@aws/lambda-invoke-store@0.3.0': {}
 
   '@babel/runtime@7.29.7': {}
+
+  '@opentelemetry/api@1.9.1': {}
 
   '@smithy/abort-controller@2.2.0':
     dependencies:
