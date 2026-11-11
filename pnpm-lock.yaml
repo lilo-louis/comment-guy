@@ -33,8 +33,8 @@ importers:
   packages/ai:
     dependencies:
       '@anthropic-ai/bedrock-sdk':
-        specifier: ^0.33.4
-        version: 0.33.4
+        specifier: ^1.1.1
+        version: 1.1.1
       '@anthropic-ai/sdk':
         specifier: '>=0.115.1 <1'
         version: 0.124.0
@@ -58,11 +58,20 @@ importers:
 
 packages:
 
-  '@anthropic-ai/bedrock-sdk@0.33.4':
-    resolution: {integrity: sha512-LvpzMH8Vbptg2CAGIJDiMbv6yLfBIGldDybDP/2jCf9F93F3Hw0Tf2aK4Dabq8C7gkxJ3FdxARjmq/AXHqe1bQ==}
+  '@anthropic-ai/bedrock-sdk@1.1.1':
+    resolution: {integrity: sha512-o6NdU+NWaGlFxDI7Kzu7rCXbwu9QalXU0vIZ8AGzk1ESoX8qeIZtDS+aJRm7P3LC7p0WPX0IMcg6aUUNIhdhOw==}
 
   '@anthropic-ai/sdk@0.124.0':
     resolution: {integrity: sha512-cN5O8i9UVxHeOQAzj/XjshWXG8KiibJDw9OGpH2Z/eR3n/RBxdoLxDJOcfqAJWvjaMDFfHTBADU04hWRJVkDyA==}
+    hasBin: true
+    peerDependencies:
+      zod: ^3.25.0 || ^4.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
+
+  '@anthropic-ai/sdk@1.6.0':
+    resolution: {integrity: sha512-XqiO/46n8S6So8jQ/6/uNCkHntyW6QHHs1gZ+hlwTx1fWDr929g4VmwIXfdMVk7SuBWNdQvAlwyi1G3t6SEIuQ==}
     hasBin: true
     peerDependencies:
       zod: ^3.25.0 || ^4.0.0
@@ -177,6 +186,10 @@ packages:
     resolution: {integrity: sha512-Nq8OhGWiZIZGV6hLHoyAKLLcJihP/xFeBMGJoUrxTX2psI8dCifzLhZISFb+VWS3wFMRDmCGw5R+dOySCqPLhw==}
     engines: {node: '>=6.9.0'}
 
+  '@opentelemetry/api@1.10.0':
+    resolution: {integrity: sha512-lMkyes8iHrG+mk6WH7X70MdCLI2RS0FwNBY1PyQ8UemaijE2m5mv5A0Niy3HtbYTFrgkUEQjFMXmSAk2hQDuPQ==}
+    engines: {node: '>=8.0.0'}
+
   '@smithy/abort-controller@2.2.0':
     resolution: {integrity: sha512-wRlta7GuLWpTqtFfGo+nZyOO1vEvewdNR1R4rTxpC8XU6vG/NDyrFBhwLZsqg1NUoR1noVaXJPC/7ZK47QCySw==}
     engines: {node: '>=14.0.0'}
@@ -184,6 +197,9 @@ packages:
   '@smithy/core@3.33.3':
     resolution: {integrity: sha512-CsOeKq/9kA3y6VJHt+/+VTCtBaxJ4OTFpgrjIUhPpDIKxBci1k2bJaQASF2h/ELWrulGp+t97DZ0mevfAD8idg==}
     engines: {node: '>=18.0.0'}
+    deprecated: |-
+      Deprecated due to a bug in custom logger data redaction. Upgrade to the latest version. If you used a custom logger with this
+        version, review your logs and rotate any credentials or other secrets. See https://github.com/aws/aws-sdk-js-v3/issues/8393.
 
   '@smithy/credential-provider-imds@4.5.2':
     resolution: {integrity: sha512-A9uSdn72ozbRUSit0eib0TW7nXuNPlaeM0zcGkJ+nE6tFcSDbnmtwoxbTCFBukVQcszDAyvsd7+rTduPTXpygg==}
@@ -372,12 +388,13 @@ packages:
 
 snapshots:
 
-  '@anthropic-ai/bedrock-sdk@0.33.4':
+  '@anthropic-ai/bedrock-sdk@1.1.1':
     dependencies:
-      '@anthropic-ai/sdk': 0.124.0
+      '@anthropic-ai/sdk': 1.6.0
       '@aws-crypto/sha256-js': 4.0.0
       '@aws-sdk/client-bedrock-runtime': 3.1128.0
       '@aws-sdk/credential-providers': 3.1128.0
+      '@opentelemetry/api': 1.10.0
       '@smithy/eventstream-serde-node': 2.2.0
       '@smithy/fetch-http-handler': 5.8.0
       '@smithy/protocol-http': 3.3.0
@@ -390,6 +407,12 @@ snapshots:
 
   '@anthropic-ai/sdk@0.124.0':
     dependencies:
+      json-schema-to-ts: 3.1.1
+      standardwebhooks: 1.1.1
+
+  '@anthropic-ai/sdk@1.6.0':
+    dependencies:
+      '@opentelemetry/api': 1.10.0
       json-schema-to-ts: 3.1.1
       standardwebhooks: 1.1.1
 
@@ -631,6 +654,8 @@ snapshots:
   '@aws/lambda-invoke-store@0.3.0': {}
 
   '@babel/runtime@7.29.7': {}
+
+  '@opentelemetry/api@1.10.0': {}
 
   '@smithy/abort-controller@2.2.0':
     dependencies:
